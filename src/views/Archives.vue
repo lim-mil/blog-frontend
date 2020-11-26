@@ -1,10 +1,10 @@
 <template>
   <div class="box">
-    <div class="container mb-5" v-for="archive in archives" :key="archive">
-      <h4 class="title is-4 has-text-right has-text-weight-light">{{archive.name}}</h4>
-      <div class="columns" v-for="post in archive.posts" :key="post">
+    <div class="container mb-5" v-for="category in categories" :key="category.id">
+      <h4 class="title is-4 has-text-right has-text-weight-light">{{category.name}}</h4>
+      <div class="columns" v-for="post in category.posts" :key="post.id">
         <div class="column is-2-desktop">
-          {{post.created}}
+          {{post.created | get_dt}}
         </div>
         <div class="column is-10-desktop">
           <h5 class="title is-5 has-text-weight-light is-4-desktop "><a href="#">{{post.title}}</a></h5>
@@ -19,6 +19,7 @@
     name: "Archives",
     data: () => {
       return {
+        categories: [],
         archives: [
           {
             name: '编程',
@@ -81,6 +82,20 @@
             ]
           }
         ]
+      }
+    },
+    created() {
+      this.$axios({
+        method: 'get',
+        url: 'http://127.0.0.1:7331/post/category/list'
+      }).then((response) => {
+        console.log(response.data)
+        this.categories = response.data
+      })
+    },
+    filters: {
+      get_dt(v) {
+        return new Date(v*1000).toLocaleDateString();
       }
     }
   }
