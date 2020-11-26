@@ -1,8 +1,15 @@
 <template>
   <div>
-    <div class="box" v-for="post in post_list" :key="post">
-      <h2 class="title">{{post.title}}</h2>
-      <div class="content is-small has-text-grey">{{post.created | datetimeChange}}</div>
+    <div class="box" v-for="post in posts" :key="post.id">
+      <h2 class="title has-text-weight-light"><a href="#">{{post.title}}</a></h2>
+      <div class="columns">
+      <div class="column is-2 is-small has-text-grey datetime">
+        <p>{{post.created | datetimeChange}}</p>
+      </div>
+      <div class="column has-text-left is-small has-text-grey category">
+        <p>{{post.category.name}}</p>
+      </div>
+      </div>
       <p class="subtitle content is-6 has-text-grey">
         {{post.description}}
       </p>
@@ -20,33 +27,8 @@ export default {
   },
   data: () => {
     return {
-      post_list: [
-        {
-          title: 'helo blog',
-          created: 1606147036,
-          description: '这是一条假的博文，this is a fake blog post'
-        },
-        {
-          title: 'helo blog',
-          created: 1606146006,
-          description: '这另是一条假的博文，this is another fake blog post'
-        },
-        {
-          title: 'helo blog',
-          created: 1606140006,
-          description: '这另另是一条假的博文，this is another fake blog post'
-        },
-        {
-          title: 'helo blog',
-          created: 1600000006,
-          description: '这另另另是一条假的博文，this is another fake blog post'
-        },
-        {
-          title: 'helo blog',
-          created: 1500000006,
-          description: '这另另另另是一条假的博文，this is another fake blog post'
-        }
-      ]
+      posts: [],
+
     }
   },
   filters: {
@@ -73,8 +55,14 @@ export default {
       method: 'get',
       url: 'http://127.0.0.1:7331/post/list'
     }).then((response) => {
-      console.log(response)
+      console.log(response.data)
+      this.posts = response.data.post_list
     })
   }
 }
 </script>
+
+<style lang="stylus">
+.datetime, .category
+  font-size small
+</style>
