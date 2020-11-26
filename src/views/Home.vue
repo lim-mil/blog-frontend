@@ -53,7 +53,7 @@ export default {
   created() {
     this.$axios({
       method: 'get',
-      url: 'http://127.0.0.1:7331/post/list'
+      url: 'http://127.0.0.1:7331/posts/'
     }).then((response) => {
       console.log(response.data)
       this.posts = response.data.post_list

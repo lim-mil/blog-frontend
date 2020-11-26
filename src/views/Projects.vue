@@ -25,34 +25,8 @@
     name: "Projects",
     data: () => {
       return {
-        categories: [
-          {
-            id: 1,
-            name: 'Python',
-            projects: [
-              {
-                id: 1,
-                name: 'blog',
-                link: '#',
-                description: '一个简单的个人博客',
-                status: 0
-              }
-            ]
-          },
-          {
-            id: 2,
-            name: 'Go',
-            projects: [
-              {
-                id: 2,
-                name: 'GOGOGO',
-                link: '#',
-                description: '一个简单的Go项目',
-                status: 1
-              }
-            ]
-          }
-        ]
+        categories: [],
+
       }
     },
     filters: {
@@ -64,6 +38,14 @@
             return '停止';
         }
       }
+    },
+    created() {
+      this.$axios({
+        method: 'get',
+        url: 'http://127.0.0.1:7331/projects/categories/'
+      }).then((response) => {
+        this.categories = response.data;
+      })
     }
   }
 </script>
