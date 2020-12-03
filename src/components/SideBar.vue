@@ -3,44 +3,56 @@
     <div class="card">
       <div class="card-image">
         <figure class="image is-4by3">
-          <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+          <img src="http://127.0.0.1:7331/static/img/limyel.jpg" alt="Placeholder image">
         </figure>
       </div>
       <div class="card-content">
         <div class="media">
-          <div class="media-left">
-            <figure class="image is-48x48">
-              <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-            </figure>
-          </div>
           <div class="media-content">
-            <p class="title is-4">John Smith</p>
-            <p class="subtitle is-6">@johnsmith</p>
+            <p class="title is-4 has-text-centered">{{info.name}}</p>
+            <p class="subtitle is-6"><img src="./../assets/github.svg" class="icon">&nbsp;<a :href="info.link">github</a></p>
+            <p class="subtitle is-6"><img src="./../assets/location.svg" class="icon">&nbsp;{{info.location}}</p>
+            <p class="subtitle is-6"><img src="./../assets/heart.svg" class="icon">&nbsp;{{info.job}}</p>
           </div>
         </div>
+
         <div class="content">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-          <a href="#">#css</a> <a href="#">#responsive</a>
-          <br>
-          <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+          {{info.description}}
         </div>
       </div>
     </div>
     <div class="box mt-3">
-      <li>sfsdfsdf</li>
-      <li>sfsdfsdf</li>
-      <li>sfsdfsdf</li>
-      <li>sfsdfsdf</li>
-      <li>sfsdfsdf</li>
-      <li>sfsdfsdf</li>
+      <li v-for="blogrol in blogrols" :key="blogrol.name">
+        <a :href="blogrol.link">{{blogrol.name}}</a>
+      </li>
     </div>
   </div>
 </template>
 
 <script>
   export default {
-    name: "SideBar"
+    name: "SideBar",
+    data: () => {
+      return {
+        info: {},
+        blogrols: []
+      }
+    },
+    created() {
+      this.$axios({
+        method: 'get',
+        url: 'http://127.0.0.1:7331/info/'
+      }).then((response) => {
+        this.info = response.data
+      });
+      this.$axios({
+        method: 'get',
+        url: 'http://127.0.0.1:7331/info/blogrol'
+      }).then((response) => {
+        this.blogrols = response.data
+      })
+
+    }
   }
 </script>
 
