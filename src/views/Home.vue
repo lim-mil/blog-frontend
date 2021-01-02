@@ -41,7 +41,7 @@ export default {
         return delta + ' 分钟前';
       else if (delta >= 60 && delta < 60 * 24)
         return parseInt(delta / 60) + ' 小时前';
-      else if (delta >= 60 * 24 & delta < 60 * 24 * 100)
+      else if (delta >= 60 * 24 && delta < 60 * 24 * 100)
         return parseInt(delta / 60 / 24) + ' 天前';
       else if (delta >= 60 * 24 * 100) {
         value *= 1000;
