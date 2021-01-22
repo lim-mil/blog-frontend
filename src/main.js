@@ -3,10 +3,9 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import "bulma/css/bulma.css"
-import axios from 'axios'
+import "./request/http";
 
 Vue.config.productionTip = false
-Vue.prototype.$axios = axios
 // Vue.prototype.qs = qs
 
 new Vue({

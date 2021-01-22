@@ -20,6 +20,8 @@
 <script>
 // @ is an alias to /src
 
+import {apiPosts} from "@/request/api";
+
 export default {
   name: 'Home',
   components: {
@@ -50,14 +52,12 @@ export default {
       }
     }
   },
-  created() {
-    this.$axios({
-      method: 'get',
-      url: 'http://127.0.0.1:7331/posts/'
-    }).then((response) => {
-      console.log(response.data)
-      this.posts = response.data.post_list
+  mounted() {
+    apiPosts().then((response) => {
+      this.posts = response.data;
     })
+
+
   }
 }
 </script>
