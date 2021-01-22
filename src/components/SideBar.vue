@@ -30,6 +30,8 @@
 </template>
 
 <script>
+import {apiBlogrols, apiInfo} from "@/request/api";
+
   export default {
     name: "SideBar",
     data: () => {
@@ -39,17 +41,12 @@
       }
     },
     created() {
-      this.$axios({
-        method: 'get',
-        url: 'http://127.0.0.1:7331/info/'
-      }).then((response) => {
-        this.info = response.data
-      });
-      this.$axios({
-        method: 'get',
-        url: 'http://127.0.0.1:7331/info/blogrol'
-      }).then((response) => {
-        this.blogrols = response.data
+      apiInfo().then(response => {
+        this.info = response.data;
+      })
+
+      apiBlogrols().then(response => {
+        this.blogrols = response.data;
       })
 
     }

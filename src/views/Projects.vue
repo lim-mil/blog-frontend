@@ -21,33 +21,32 @@
 </template>
 
 <script>
-  export default {
-    name: "Projects",
-    data: () => {
-      return {
-        categories: [],
+import {apiProjects} from "@/request/api";
 
-      }
-    },
-    filters: {
-      getStatus(value) {
-        switch(value) {
-          case 0:
-            return '开发中';
-          case 1:
-            return '停止';
-        }
-      }
-    },
-    created() {
-      this.$axios({
-        method: 'get',
-        url: 'http://127.0.0.1:7331/projects/categories/'
-      }).then((response) => {
-        this.categories = response.data;
-      })
+export default {
+  name: "Projects",
+  data: () => {
+    return {
+      categories: [],
+
     }
+  },
+  filters: {
+    getStatus(value) {
+      switch(value) {
+        case 0:
+          return '开发中';
+        case 1:
+          return '停止';
+      }
+    }
+  },
+  mounted() {
+    apiProjects().then(response => {
+      this.categories = response.data;
+    })
   }
+}
 </script>
 
 <style lang="stylus">
