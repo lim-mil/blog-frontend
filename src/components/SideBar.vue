@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-image">
         <figure class="image is-4by3">
-          <img src="http://127.0.0.1:7331/static/img/limyel.jpg" alt="Placeholder image">
+          <img src="http://127.0.0.1:7331/media/img/limyel.jpg" alt="Placeholder image">
         </figure>
       </div>
       <div class="card-content">
@@ -40,7 +40,7 @@ import {apiBlogrols, apiInfo} from "@/request/api";
         blogrols: []
       }
     },
-    created() {
+    mounted() {
       apiInfo().then(response => {
         this.info = response.data;
       })
