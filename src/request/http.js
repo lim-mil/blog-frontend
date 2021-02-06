@@ -1,8 +1,10 @@
 import axios from "axios";
 import Vue from "vue";
 import QS from "qs"
+import CONFIG from "@/config";
 
-axios.defaults.baseURL = "http://localhost:7331/api/v1";
+// axios.defaults.baseURL = "http://localhost:7331/api/v1";
+axios.defaults.baseURL = CONFIG.BASE_SERVER + CONFIG.BASE_API;
 axios.defaults.headers.post["Content-Type"] = "application/json";
 axios.defaults.timeout = 10000;
 

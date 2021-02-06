@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-image">
         <figure class="image is-4by3">
-          <img src="http://127.0.0.1:7331/media/img/limyel.jpg" alt="Placeholder image">
+          <img :src="image_url" alt="Placeholder image">
         </figure>
       </div>
       <div class="card-content">
@@ -31,13 +31,15 @@
 
 <script>
 import {apiBlogrols, apiInfo} from "@/request/api";
+import CONFIG from "@/config";
 
   export default {
     name: "SideBar",
     data: () => {
       return {
         info: {},
-        blogrols: []
+        blogrols: [],
+        image_url: CONFIG.BASE_SERVER + CONFIG.MEDIA_API + "/img/limyel.jpg"
       }
     },
     mounted() {
