@@ -13,7 +13,7 @@ let CONFIG = {
 
 try {
   const pri = require("./private");
-  merge(CONFIG, pri);
+  merge(CONFIG, pri.default);
 } catch (e) {
   console.log("Failed to load private configuration!")
 }
