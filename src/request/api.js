@@ -1,7 +1,7 @@
 import {get} from "@/request/http";
 
 export const apiPosts = (page=1, step=20) => {
-  let url = "posts";
+  let url = "/posts";
   let params = {
     page: page,
     step: step
