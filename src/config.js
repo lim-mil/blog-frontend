@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import merge from "lodash/merge"
 
-let PORT = 7331
+let PORT = 5976
 let HOST = "localhost"
 
 let CONFIG = {

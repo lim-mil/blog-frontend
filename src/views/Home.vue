@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="box" v-for="post in posts" :key="post.id">
-      <h2 class="title has-text-weight-light"><a href="#">{{post.title}}</a></h2>
+      <h2 class="title has-text-weight-light"><router-link :to="{name: 'Post', params: {id: post.id}}">{{post.title}}</router-link><a href="#">{{post.title}}</a></h2>
       <div class="columns">
       <div class="column is-2 is-small has-text-grey datetime">
         <p>{{post.created | datetimeChange}}</p>

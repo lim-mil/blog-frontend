@@ -33,3 +33,8 @@ export const apiAbout = () => {
   let url = "/info/about";
   return get(url);
 }
+
+export const apiPost = (id) => {
+  let url = "/posts/" + id;
+  return get(url);
+}

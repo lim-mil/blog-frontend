@@ -7,7 +7,7 @@
           {{post.created | get_dt}}
         </div>
         <div class="column is-10-desktop">
-          <h5 class="title is-5 has-text-weight-light is-4-desktop "><a href="#">{{post.title}}</a></h5>
+          <h5 class="title is-5 has-text-weight-light is-4-desktop "><router-link :to="{name: 'Post', params: {id: post.id}}">{{post.title}}</router-link></h5>
         </div>
       </div>
     </div>
