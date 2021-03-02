@@ -4,6 +4,7 @@
     <div class="content is-small has-text-centered has-text-grey">{{ ts }}</div>
     <div class="subtitle content is-6" v-html="post? md: ''"></div>
     <hr>
+    <Comment></Comment>
   </div>
 </template>
 
@@ -11,9 +12,11 @@
 import {apiPost} from "@/request/api";
 import {tsToStr} from "@/utils/ts";
 import {toMarkdown} from "@/utils/md";
+import Comment from "@/components/Comment";
 
 export default {
   name: "Post",
+  components: {Comment},
   data: () => {
     return {
       post: null

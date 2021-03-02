@@ -38,3 +38,14 @@ export const apiPost = (id) => {
   let url = "/posts/" + id;
   return get(url);
 }
+
+export const apiGithubAuth = (redirectUri) => {
+  let url = "https://github.com/login/oauth/authorize";
+  let params = {
+    client_id: "08534284cc7baa6ce7d4",
+    redirect_uri: redirectUri,
+    scope: "read:user",
+    state: "limyel.com"
+  }
+  return get(url, params);
+}
