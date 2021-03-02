@@ -8,7 +8,7 @@
       </div>
       <div class="level-right">
         <div class="level-item">
-          <a class="button is-info" href="#">使用GitHub登录</a>
+          <a class="button is-info" :href="githubUrl">使用GitHub登录</a>
         </div>
       </div>
     </nav>
@@ -110,8 +110,20 @@
 </template>
 
 <script>
+import {apiGithubAuth} from "../request/api";
+
 export default {
-name: "Comment"
+  name: "Comment",
+  data: () => {
+    return {
+      githubUrl: "https://github.com/login/oauth/authorize?client_id=08534284cc7baa6ce7d4&scope=read:user&state=limyel"
+    }
+  },
+  methods: {
+    loginGithub() {
+      apiGithubAuth();
+    }
+  }
 }
 </script>
 

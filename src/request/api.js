@@ -47,5 +47,6 @@ export const apiGithubAuth = (redirectUri) => {
     scope: "read:user",
     state: "limyel.com"
   }
-  return get(url, params);
+  get(url, params);
+  // return get(url, params);
 }
