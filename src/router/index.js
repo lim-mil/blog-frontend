@@ -32,6 +32,11 @@ const routes = [
     component: () => import('@/views/About')
   },
   {
+    path: '/oauth/github',
+    name: 'Github',
+    component: () => import('@/views/GithubOauth')
+  },
+  {
     path: '*',
     component: () => import('@/views/PageNotFound')
   }
