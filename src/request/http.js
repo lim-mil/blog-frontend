@@ -1,6 +1,5 @@
 import axios from "axios";
 import Vue from "vue";
-import QS from "qs"
 import CONFIG from "@/config";
 
 // axios.defaults.baseURL = "http://localhost:7331/api/v1";
@@ -9,7 +8,18 @@ axios.defaults.headers.post["Content-Type"] = "application/json";
 axios.defaults.timeout = 10000;
 
 // 验证 request 拦截器
-// axios.interceptors.request.use()
+axios.interceptors.request.use(
+  config => {
+    let token = localStorage.getItem("OAUTH_JWT_TOKEN");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  error => {
+    return Promise.reject(error);
+  }
+)
 
 // 验证 response 拦截器
 axios.interceptors.response.use(
@@ -49,7 +59,7 @@ export function get(url, params) {
 
 export function post(url, params) {
   return new Promise((resolve, reject) => {
-    axios.post(url, QS.stringify(params)).then(response => {
+    axios.post(url, params).then(response => {
       resolve(response.data);
     }).catch(error => {
       reject(error.data);

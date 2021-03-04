@@ -15,6 +15,7 @@ export default {
     apiGithubOauth(params).then(response => {
       localStorage.setItem("OAUTH_JWT_TOKEN", response.data.token);
       localStorage.setItem("LOGIN", response.data.oauth.login);
+      localStorage.setItem("OAUTH_ID", response.data.oauth.id);
       localStorage.setItem("AVATAR_URL", response.data.oauth.avatar_url);
       let uri = localStorage.getItem("CURRENT_URI");
       window.location.href = uri;

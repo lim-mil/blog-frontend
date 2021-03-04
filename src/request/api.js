@@ -1,4 +1,4 @@
-import {get} from "@/request/http";
+import {get, post} from "@/request/http";
 
 export const apiPosts = (page=1, step=20) => {
   let url = "/posts";
@@ -41,5 +41,15 @@ export const apiPost = (id) => {
 
 export const apiGithubOauth = (params) => {
   let url = "/oauth/github" + params;
+  return get(url);
+}
+
+export const apiCreateComment = (params) => {
+  let url = "/comments";
+  return post(url, params);
+}
+
+export const apiComments = (id) => {
+  let url = "/comments/post/" + id;
   return get(url);
 }

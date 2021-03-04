@@ -17,7 +17,7 @@ const routes = [
     component: () => import('@/views/Archives')
   },
   {
-    path: '/post/:id',
+    path: '/archives/post/:id',
     name: 'Post',
     component: () => import('@/views/Post')
   },

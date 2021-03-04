@@ -4,7 +4,7 @@
     <div class="content is-small has-text-centered has-text-grey">{{ ts }}</div>
     <div class="subtitle content is-6" v-html="post? md: ''"></div>
     <hr>
-    <Comment></Comment>
+    <Comment :post_id="post.id"></Comment>
   </div>
 </template>
 
