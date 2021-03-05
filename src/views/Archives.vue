@@ -1,6 +1,6 @@
 <template>
   <div class="box">
-    <div class="container mb-5" v-for="category in categories" :key="category.id">
+    <div class="section" v-for="category in categories" :key="category.id">
       <h4 class="title is-4 has-text-right has-text-weight-light">{{category.name}}</h4>
       <div class="columns" v-for="post in category.posts" :key="post.id">
         <div class="column is-2-desktop">
