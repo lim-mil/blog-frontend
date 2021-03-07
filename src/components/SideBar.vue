@@ -2,7 +2,7 @@
   <div>
     <div class="card">
       <div class="card-image">
-        <figure class="image is-4by3">
+        <figure class="image is-4 mt-5">
           <img :src="image_url" alt="Placeholder image">
         </figure>
       </div>
